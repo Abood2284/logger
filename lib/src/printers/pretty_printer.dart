@@ -183,7 +183,11 @@ class PrettyPrinter extends LogPrinter {
   /// Default fallbacks are modifiable via [defaultLevelEmojis].
   final Map<Level, String>? levelEmojis;
 
+  /// Get the Class Name where the error occured - Owner @Abood2284
+  final String? className;
+
   PrettyPrinter({
+    this.className,
     this.stackTraceBeginIndex = 0,
     this.methodCount = 2,
     this.errorMethodCount = 8,
@@ -400,6 +404,11 @@ class PrettyPrinter extends LogPrinter {
       for (var line in error.split('\n')) {
         buffer.add(color('$verticalLineAtLevel$line'));
       }
+      if (_includeBox[level]!) buffer.add(color(_middleBorder));
+    }
+
+    if (className != null) {
+      buffer.add(color('$verticalLineAtLevel$className'));
       if (_includeBox[level]!) buffer.add(color(_middleBorder));
     }
 
