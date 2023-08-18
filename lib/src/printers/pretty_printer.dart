@@ -187,7 +187,7 @@ class PrettyPrinter extends LogPrinter {
   final String? className;
 
   PrettyPrinter({
-    this.className,
+    this.className = 'No Classes Added',
     this.stackTraceBeginIndex = 0,
     this.methodCount = 2,
     this.errorMethodCount = 8,
